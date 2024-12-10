@@ -40,7 +40,7 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): View
     {
         $student = Student::find($id);
         return view('students.show')->with('students', $student);
@@ -49,7 +49,7 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): View
     {
         $student = Student::find($id);
         return view('students.edit')->with('students', $student);
@@ -58,7 +58,7 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id) : RedirectResponse
     {
         $student = Student::find($id);
         $input = $request->all();
@@ -69,7 +69,7 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) : RedirectResponse
     {
         Student::destroy($id);
         return redirect('students')->with('flash_message', 'Student deleted!'); 
